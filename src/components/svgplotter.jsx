@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 
 class Plotter extends Component {
+
   constructor() {
-    //   Counter is a child class as we doing inheritance here, it is extending Component class. So, before calling the
-    //   constructor of child class we have to call the constructor of parent class and we do that by calling super().
     super();
-    this.countIncrement = this.countIncrement.bind(this);
     this.state = { input: "", count: 0, flag: false };
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -67,6 +65,7 @@ class Plotter extends Component {
     },
   };
 
+  
   generateRandomColor() {
       let color = Math.floor(Math.random()*16777215).toString(16);
       return "#" + color;
@@ -74,7 +73,6 @@ class Plotter extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-
     let text = document.getElementById("svgInput");
     this.isPolygon = false;
     this.isEllipse = false;
@@ -132,6 +130,7 @@ class Plotter extends Component {
           <form>
             <h1>SVG Plotter</h1>
             <p>Enter Values:</p>
+            {/* <input type="text" onChange={this.myChangeHandler} /> */}
             <textarea
               id="svgInput"
               name="textarea"
@@ -156,7 +155,6 @@ class Plotter extends Component {
                     />
                   </svg>
                 )}
-
             </div>
             <div style={this.gridItem}>
               {this.arrayToStoreValues.rectangle.values.length === 5 &&
