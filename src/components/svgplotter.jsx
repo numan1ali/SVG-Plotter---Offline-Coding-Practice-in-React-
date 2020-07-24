@@ -220,15 +220,15 @@ class Plotter extends Component {
               !this.objectToStoreValues.ellipse.xCoordinat ||
               !this.objectToStoreValues.ellipse.yCoordinat ||
               !this.objectToStoreValues.ellipse.horizentalRadius ||
-              !this.objectToStoreValues.ellipse.verticalRadius 
+              !this.objectToStoreValues.ellipse.verticalRadius
             ) {
               ellipseError = `Wrong input pattern for ellipse - error in line ${line}`;
             } else {
               ellipseError = "";
             }
             this.setState({ ellipseError });
-          } else if(svgValues[0] === "") {
-              this.setState({ commandName: "" });
+          } else if (svgValues[0] === "") {
+            this.setState({ commandName: "" });
           } else {
             let commandName;
             commandName = `Wrong input pattern - Command can only start with c,r,p or e - error in line ${line}`;
@@ -308,77 +308,79 @@ class Plotter extends Component {
             Draw
           </button>
 
-          {this.inputLength <= 4 ? (
-            <div style={this.gridContainer}>
-              <div style={this.gridItem}>
-                {this.objectToStoreValues.circle.values.length === 4 &&
-                  this.state.flag && (
-                    <svg height="250" width="250">
-                      <circle
-                        cx={this.objectToStoreValues.circle.xCoordinat}
-                        cy={this.objectToStoreValues.circle.yCoordinat}
-                        r={this.objectToStoreValues.circle.radius}
-                        style={{
-                          stroke: "black",
-                          strokeWidth: 3,
-                          fill: this.generateRandomColor(),
-                        }}
-                      />
-                    </svg>
-                  )}
+          {this.inputLength <= 4 && this.inputLength > 0 ? (
+            this.state.inputError ? null : (
+              <div style={this.gridContainer}>
+                <div style={this.gridItem}>
+                  {this.objectToStoreValues.circle.values.length === 4 &&
+                    this.state.flag && (
+                      <svg height="250" width="250">
+                        <circle
+                          cx={this.objectToStoreValues.circle.xCoordinat}
+                          cy={this.objectToStoreValues.circle.yCoordinat}
+                          r={this.objectToStoreValues.circle.radius}
+                          style={{
+                            stroke: "black",
+                            strokeWidth: 3,
+                            fill: this.generateRandomColor(),
+                          }}
+                        />
+                      </svg>
+                    )}
+                </div>
+                <div style={this.gridItem}>
+                  {this.objectToStoreValues.rectangle.values.length === 5 &&
+                    this.state.flag && (
+                      <svg height="250" width="250">
+                        <rect
+                          x={this.objectToStoreValues.rectangle.xCoordinat}
+                          y={this.objectToStoreValues.rectangle.yCoordinat}
+                          width={this.objectToStoreValues.rectangle.rWidth}
+                          height={this.objectToStoreValues.rectangle.rHeight}
+                          style={{
+                            fill: this.generateRandomColor(),
+                            strokeWidth: 3,
+                            stroke: "rgb(0,0,0)",
+                          }}
+                        />
+                      </svg>
+                    )}
+                </div>
+                <div style={this.gridItem}>
+                  {this.objectToStoreValues.polygon.values.length === 4 &&
+                    this.state.flag && (
+                      <svg height="210" width="500">
+                        <polygon
+                          points={this.objectToStoreValues.polygon.points}
+                          style={{
+                            fill: this.generateRandomColor(),
+                            stroke: "purple",
+                            strokeWidth: 1,
+                          }}
+                        />
+                      </svg>
+                    )}
+                </div>
+                <div style={this.gridItem}>
+                  {this.state.flag &&
+                    this.objectToStoreValues.ellipse.values.length === 5 && (
+                      <svg height="250" width="250">
+                        <ellipse
+                          cx={this.objectToStoreValues.ellipse.xCoordinat}
+                          cy={this.objectToStoreValues.ellipse.yCoordinat}
+                          rx={this.objectToStoreValues.ellipse.horizentalRadius}
+                          ry={this.objectToStoreValues.ellipse.verticalRadius}
+                          style={{
+                            fill: this.generateRandomColor(),
+                            strokeWidth: 3,
+                            stroke: "purple",
+                          }}
+                        />
+                      </svg>
+                    )}
+                </div>
               </div>
-              <div style={this.gridItem}>
-                {this.objectToStoreValues.rectangle.values.length === 5 &&
-                  this.state.flag && (
-                    <svg height="250" width="250">
-                      <rect
-                        x={this.objectToStoreValues.rectangle.xCoordinat}
-                        y={this.objectToStoreValues.rectangle.yCoordinat}
-                        width={this.objectToStoreValues.rectangle.rWidth}
-                        height={this.objectToStoreValues.rectangle.rHeight}
-                        style={{
-                          fill: this.generateRandomColor(),
-                          strokeWidth: 3,
-                          stroke: "rgb(0,0,0)",
-                        }}
-                      />
-                    </svg>
-                  )}
-              </div>
-              <div style={this.gridItem}>
-                {this.objectToStoreValues.polygon.values.length === 4 &&
-                  this.state.flag && (
-                    <svg height="210" width="500">
-                      <polygon
-                        points={this.objectToStoreValues.polygon.points}
-                        style={{
-                          fill: this.generateRandomColor(),
-                          stroke: "purple",
-                          strokeWidth: 1,
-                        }}
-                      />
-                    </svg>
-                  )}
-              </div>
-              <div style={this.gridItem}>
-                {this.state.flag &&
-                  this.objectToStoreValues.ellipse.values.length === 5 && (
-                    <svg height="250" width="250">
-                      <ellipse
-                        cx={this.objectToStoreValues.ellipse.xCoordinat}
-                        cy={this.objectToStoreValues.ellipse.yCoordinat}
-                        rx={this.objectToStoreValues.ellipse.horizentalRadius}
-                        ry={this.objectToStoreValues.ellipse.verticalRadius}
-                        style={{
-                          fill: this.generateRandomColor(),
-                          strokeWidth: 3,
-                          stroke: "purple",
-                        }}
-                      />
-                    </svg>
-                  )}
-              </div>
-            </div>
+            )
           ) : null}
         </div>
       </div>
