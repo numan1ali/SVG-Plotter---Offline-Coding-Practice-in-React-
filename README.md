@@ -16,8 +16,9 @@ Detail about the project.
 5. Circle: CX - CY - Radius | c 20 50 44
 6. Rectangle: X - Y - Width - Height | r 20 50 44 55
 7. Polygon: X1,Y1 - X2,Y2 - X3,Y3 | p 98,89 50,78 77,67
+8. If user put the extra space at the end of the command, app will give the erroe to strictly follow the command format.
 ## Bonus Task
-8. Ellipse: EX - EY - HRadius - VRadius | e 20 50 44 54
+9. Ellipse: EX - EY - HRadius - VRadius | e 20 50 44 54
 
 ## Note
 
@@ -25,10 +26,10 @@ If any command has less parameter or more than required parameter error will pop
 I would Attach ScreenShot too, to give the user better idea how it works.
 
 ## Correct Format
-c 20 50 44 (line End - Press enter after every command.)
-r 20 50 44 55
-p 98,89 50,78 77,67
-e 20 50 44 54
+1. c 20 50 44 (line End - Press enter after every command.)
+2. r 20 50 44 55
+3. p 98,89 50,78 77,67
+4. e 20 50 44 54
 
 
 
