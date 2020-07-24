@@ -24,7 +24,7 @@ class Plotter extends Component {
     width: 470,
     height: 260,
     textAlign: "center",
-    marginBottom: 15
+    marginBottom: 15,
   };
   btnStyle = {
     backgroundColor: "#e7e7e7",
@@ -199,8 +199,12 @@ class Plotter extends Component {
             this.setState({ polygonError });
             // this.isPolygon = true;
           } else if (svgValues[0] === "e") {
-            this.objectToStoreValues.ellipse.xCoordinat = parseInt(svgValues[1]);
-            this.objectToStoreValues.ellipse.yCoordinat = parseInt(svgValues[2]);
+            this.objectToStoreValues.ellipse.xCoordinat = parseInt(
+              svgValues[1]
+            );
+            this.objectToStoreValues.ellipse.yCoordinat = parseInt(
+              svgValues[2]
+            );
             this.objectToStoreValues.ellipse.horizentalRadius = parseInt(
               svgValues[3]
             );
@@ -216,17 +220,18 @@ class Plotter extends Component {
               !this.objectToStoreValues.ellipse.xCoordinat ||
               !this.objectToStoreValues.ellipse.yCoordinat ||
               !this.objectToStoreValues.ellipse.horizentalRadius ||
-              !this.objectToStoreValues.ellipse.verticalRadius
+              !this.objectToStoreValues.ellipse.verticalRadius 
             ) {
               ellipseError = `Wrong input pattern for ellipse - error in line ${line}`;
             } else {
               ellipseError = "";
             }
             this.setState({ ellipseError });
+          } else if(svgValues[0] === "") {
+              this.setState({ commandName: "" });
           } else {
             let commandName;
-            commandName =
-              "Wrong input pattern - Command can only start with c,r,p or e.";
+            commandName = `Wrong input pattern - Command can only start with c,r,p or e - error in line ${line}`;
 
             if (commandName) {
               this.setState({ commandName });
@@ -246,7 +251,6 @@ class Plotter extends Component {
   myChangeHandler = (event) => {
     this.setState({ input: event.target.value });
   };
-
   render() {
     let polygon = this.isPolygon;
     let ellipse = this.isEllipse;
@@ -255,24 +259,21 @@ class Plotter extends Component {
         <div style={{ margin: 20, textAlign: "center" }}>
           <form>
             <h1>SVG Plotter</h1>
-            <div style={{textAlign: "-webkit-center"}}>
+            <div style={{ textAlign: "-webkit-center" }}>
               <div style={this.infoNote}>
-                <strong style={{textAlign: "center"}}>Note!</strong> 
+                <strong style={{ textAlign: "center" }}>Note!</strong>
                 <ul>
-                  <li>
-                    Please Read the README.md file to get the format.
-                  </li>
-                  <li>
-                    You can only add 4 commands at a time.
-                  </li>
+                  <li>Please Read the README.md file to get the format.</li>
+                  <li>You can only add 4 commands at a time.</li>
                   <li>Commands name can only start with c,r,p or e.</li>
                   <li>If user won't follow the Format, Errors will pop up. </li>
-                  <li>User will see the errors, once he click on the draw button. </li>
+                  <li>
+                    User will see the errors, once he click on the draw button.{" "}
+                  </li>
                   <li>Circle: CX - CY - Radius | c 20 50 44</li>
                   <li>Rectangle: X - Y - Width - Height | r 20 50 44 55</li>
                   <li>Polygon: X1,Y1 - X2,Y2 - X3,Y3 | p 98,89 50,78 77,67</li>
                   <li>Ellipse: EX - EY - HRadius - VRadius | e 20 50 44 54</li>
-                
                 </ul>
               </div>
             </div>
