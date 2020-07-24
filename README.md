@@ -25,7 +25,7 @@ If any command has less parameter or more than required parameter error will pop
 I would Attach ScreenShot too, to give the user better idea how it works.
 
 ## Correct Format
-c 20 50 44
+c 20 50 44 (line End - Press enter after every command.)
 r 20 50 44 55
 p 98,89 50,78 77,67
 e 20 50 44 54
