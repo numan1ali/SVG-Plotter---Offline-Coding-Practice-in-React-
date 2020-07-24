@@ -1,4 +1,4 @@
-## SVG Plotter
+## SVG Plotter - React JS
 
 To run the the project, clone it first, then go to the project directory and run the command.
 ## 'npm install'
